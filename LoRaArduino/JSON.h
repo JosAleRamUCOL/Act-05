@@ -3,7 +3,7 @@
 
 #include <Arduino.h>
 #include <ArduinoJson.h>
-#include <LoRa.h>  // Añadir esta línea
+#include <LoRa.h> 
 
 class JSON {
 public:
@@ -13,7 +13,7 @@ public:
 
 String JSON::construirJSON(uint8_t contador) {
   StaticJsonDocument<200> doc;
-  doc["Equipo"] = "4LR";  // Corregido: eliminado 'const char*'
+  doc["Equipo"] = "4LR";
   doc["contador"] = contador;
 
   String output;
@@ -29,9 +29,9 @@ void JSON::enviarJSON(uint8_t contador) {
   LoRa.beginPacket();
   LoRa.print(jsonSalida);
   LoRa.endPacket();
-  
-  // Pequeña pausa para asegurar la transmisión
+
   delay(10);
 }
+
 
 #endif
